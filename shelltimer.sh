@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Solicita que o usuário insira um valor de tempo em minutos
 if [ -n "$1" ]; then
     tempo_minutos="$1"
 else
@@ -8,10 +7,8 @@ else
 fi
 read -p "Informe o titulo do timer caso queira: " motivo
 
-# Converte o tempo em minutos para segundos
 tempo_minutos=$((tempo_minutos * 60))
 
-# Executa a contagem regressiva
 while [ $tempo_minutos -ge 0 ]
 do
     echo "Tempo restante: $((tempo_minutos / 60)) minutos e $((tempo_minutos % 60)) segundos" 
@@ -23,7 +20,8 @@ done
 # Emite 10 bips seguidos ao final da contagem regressiva
 for i in {1..10}
 do
-    echo -e "\a"
-    sleep 0.3
+    echo -e "\a" 
+    sleep 0.2
 done
 notify-send -t 10000 "Contagem: $motivo Encerrada:"
+exit 0
